@@ -28,7 +28,7 @@ table.add_row(['Jane', '25', 'Los Angeles'])
 table.print()
 ```
 
-For more detailed information and examples, check the [github](https://github.com/mirolaukka/tablipy) or explore the examples in the `tests` directory.
+For more detailed information and examples, check the [documentation](https://github.com/mirolaukka/tablipy/blob/main/documentation.md) or explore the examples in the `tests` directory.
 
 ## Features
 
