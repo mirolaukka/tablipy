@@ -1,5 +1,3 @@
-Absolutely! Here's the `README.md` content without the code blocks:
-
 # Tablipy
 
 Tablipy is a Python library for working with tabular data. It provides a simple and intuitive way to create, manipulate, and print tabular data structures.
