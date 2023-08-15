@@ -127,11 +127,14 @@ class Tablipy:
         if isinstance(column_index, str):
             column_index = self._get_column_by_header(column_index)
 
-        if 0 <= column_index < len(self.col_headers) and 0 <= row_index < len(self.rows):
+        if 0 <= column_index < len(self.col_headers) and 0 <= row_index < len(
+            self.rows
+        ):
             return self.rows[row_index][column_index]
         else:
             raise IndexError(
-                f"Column index {column_index} or row index {row_index} is out of range.")
+                f"Column index {column_index} or row index {row_index} is out of range."
+            )
 
     def set_column(self, column_index: int, data: List[str]):
         """
@@ -146,7 +149,8 @@ class Tablipy:
 
         if len(data) != len(self.rows):
             raise ValueError(
-                "Number of data elements doesn't match the number of rows.")
+                "Number of data elements doesn't match the number of rows."
+            )
 
         for i, value in enumerate(data):
             self.rows[i][column_index] = value
@@ -164,7 +168,8 @@ class Tablipy:
 
         if len(data) != len(self.col_headers):
             raise ValueError(
-                "Number of data elements doesn't match the number of columns.")
+                "Number of data elements doesn't match the number of columns."
+            )
 
         self.rows[row_index] = data
 
@@ -177,9 +182,12 @@ class Tablipy:
         - row_index (int): Index of the row.
         - data (str): Value to set in the cell.
         """
-        if not (0 <= column_index < len(self.col_headers)) or not (0 <= row_index < len(self.rows)):
+        if not (0 <= column_index < len(self.col_headers)) or not (
+            0 <= row_index < len(self.rows)
+        ):
             raise IndexError(
-                f"Column index {column_index} or row index {row_index} is out of range.")
+                f"Column index {column_index} or row index {row_index} is out of range."
+            )
 
         self.rows[row_index][column_index] = data
 
@@ -187,20 +195,24 @@ class Tablipy:
         """
         Pretty print the table in a tabular format.
         """
-        col_widths = [max(len(header), max(len(str(row[i])) for row in self.rows))
-                      for i, header in enumerate(self.col_headers)]
+        col_widths = [
+            max(len(header), max(len(str(row[i])) for row in self.rows))
+            for i, header in enumerate(self.col_headers)
+        ]
 
-        header_line = '| '.join(
-            f'{header:<{col_widths[i]}}' for i, header in enumerate(self.col_headers))
-        divider_line = '+-'.join('-' * width for width in col_widths)
+        header_line = "| ".join(
+            f"{header:<{col_widths[i]}}" for i, header in enumerate(self.col_headers)
+        )
+        divider_line = "+-".join("-" * width for width in col_widths)
 
         print("  " + divider_line + "  ")
         print("| " + header_line + " |")
         print("| " + divider_line + " |")
 
         for row in self.rows:
-            row_line = '| '.join(
-                f'{cell:<{col_widths[i]}}' for i, cell in enumerate(row))
+            row_line = "| ".join(
+                f"{cell:<{col_widths[i]}}" for i, cell in enumerate(row)
+            )
             print("| " + row_line + " |")
         print("  " + divider_line + "  ")
 
@@ -220,7 +232,8 @@ class Tablipy:
 
         if len(self.col_headers) != len(data[0]):
             raise ValueError(
-                "Number of columns in data doesn't match the number of column headers.")
+                "Number of columns in data doesn't match the number of column headers."
+            )
 
         self.rows = data
 
@@ -237,7 +250,8 @@ class Tablipy:
 
         if data and len(data) != len(self.rows):
             raise ValueError(
-                "Number of data elements doesn't match the number of rows.")
+                "Number of data elements doesn't match the number of rows."
+            )
 
         self.col_headers.append(header)
         self.cols.append(len(self.col_headers) - 1)  # Add the new column index
@@ -255,6 +269,7 @@ class Tablipy:
         """
         if len(data) != len(self.col_headers):
             raise ValueError(
-                "Number of data elements doesn't match the number of columns.")
+                "Number of data elements doesn't match the number of columns."
+            )
 
         self.rows.append(data)
